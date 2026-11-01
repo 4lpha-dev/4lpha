@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-// import { ArrowUpRight, Languages, Menu, X } from "lucide-react";
+import { ArrowUpRight, Languages, Menu, X } from "lucide-react";
 import Image from "next/image";
 const Nav = () => {
   const pathname = usePathname();
@@ -70,10 +70,10 @@ const Nav = () => {
             className="group flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[#00D6D0] px-5 py-2 text-xs font-medium text-white transition-all duration-300 hover:bg-[#00D6D0] hover:text-[#02090D]"
           >
             Start a Project
-            {/* <ArrowUpRight
+            <ArrowUpRight
               size={16}
               className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            /> */}
+            />
           </Link>
 
           {/* Language */}
@@ -81,7 +81,7 @@ const Nav = () => {
             aria-label="Change language"
             className="cursor-pointer text-gray-300 transition-colors duration-300 hover:text-[#00D6D0]"
           >
-            {/* <Languages size={20} strokeWidth={1.7} /> */}
+            <Languages size={20} strokeWidth={1.7} />
           </button>
         </div>
 
@@ -92,8 +92,7 @@ const Nav = () => {
           aria-expanded={isOpen}
           className="cursor-pointer text-gray-300 transition-colors duration-300 hover:text-[#00D6D0] lg:hidden"
         >
-          {isOpen ? <X size={25} /> : <h1 >open</h1> }
-          {/* //  <Menu size={25} /> */}
+          {isOpen ? <X size={25} /> : <Menu size={25} />}
         </button>
       </div>
 
@@ -130,7 +129,7 @@ const Nav = () => {
                 aria-label="Change language"
                 className="cursor-pointer text-gray-300 transition-colors duration-300 hover:text-[#00D6D0]"
               >
-                {/* <Languages size={20} strokeWidth={1.7} /> */}
+                <Languages size={20} strokeWidth={1.7} />
               </button>
 
               <Link
@@ -139,10 +138,10 @@ const Nav = () => {
                 className="group flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[#00D6D0] px-5 py-2 text-xs font-medium text-white transition-all duration-300 hover:bg-[#00D6D0] hover:text-[#02090D]"
               >
                 Start a Project
-                {/* <ArrowUpRight
+                <ArrowUpRight
                   size={16}
                   className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                /> */}
+                />
               </Link>
             </div>
           </div>

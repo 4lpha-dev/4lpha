@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #073B46;
+  --background: #18B0FF;
   /* --text: #11DDCE; */
-  --text: #00D6D0;
+  --text: #00E5FF;
 
 }
 
@@ -32,10 +32,11 @@ body {
 .herobg {
   height: 100hv;
   width: 100%;
-  background-image: url("/heroBG.png");
+  background-image: url("/Images/bg2.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  backdrop-filter: blur(50px);
   /* background-color: #ededed; */
 }
 
