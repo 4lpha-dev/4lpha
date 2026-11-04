@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Languages, Menu, X } from "lucide-react";
 import ElectricLogo from "./ElectricLogo";
+import Highlight from "./Highlight";
 
 const Nav = ({ introActive }) => {
   const pathname = usePathname();
@@ -98,12 +99,15 @@ const Nav = ({ introActive }) => {
           {/* Start a Project CTA. */}
           <Link
             href="/contact"
-            className="group flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[#00D6D0] px-5 py-2 text-xs font-medium text-white transition-all duration-300 hover:bg-[#00D6D0] hover:text-[#02090D] hover:shadow-[0_0_20px_rgba(0,214,208,0.15)]"
+            className="group relative isolate flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[#00D6D0] px-5 py-2 text-xs font-medium text-white transition-all duration-300 hover:bg-[#00D6D0] hover:text-[#02090D]"
           >
-            Start a Project
+            <Highlight size="medium" />
+
+            <span className="relative z-10">Start a Project</span>
+
             <ArrowUpRight
               size={16}
-              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              className="relative z-10 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             />
           </Link>
 

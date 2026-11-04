@@ -9,7 +9,6 @@
   --background: #18b0ff;
   --foreground: oklch(0.145 0 0);
 
-  
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -283,5 +282,73 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* Reusable Highlight */
+.highlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 0;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(168, 85, 247, 0.35) 0%,
+    rgba(147, 51, 234, 0.18) 35%,
+    rgba(124, 58, 237, 0.07) 65%,
+    transparent 100%
+  );
+
+  filter: blur(80px);
+}
+
+/* Small: CTA buttons */
+.highlight--small {
+  width: 220px;
+  height: 130px;
+}
+
+/* Medium: Sections */
+.highlight--medium {
+  width: 500px;
+  height: 300px;
+}
+
+/* Large: Ambient backgrounds */
+.highlight--large {
+  width: 900px;
+  height: 600px;
+}
+
+/* Hero background */
+.highlight--hero {
+  width: min(1000px, 100vw);
+  height: min(700px, 100vh);
+  filter: blur(60px);
+}
+
+@media (max-width: 768px) {
+  .highlight--small {
+    width: 180px;
+    height: 110px;
+  }
+
+  .highlight--medium {
+    width: 350px;
+    height: 250px;
+  }
+
+  .highlight--large {
+    width: 600px;
+    height: 400px;
+  }
+
+  .highlight--hero {
+    width: 100vw;
+    height: 80vh;
   }
 }

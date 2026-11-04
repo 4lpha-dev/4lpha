@@ -1,79 +1,11 @@
-// 'use client'
-// import Image from "next/image";
-// import AnimatedSection from "@/components/AnimatedSection";
-// import Hero from "@/components/Hero";
-// export default function Home() {
-//   return (
-//     <div className="container ">
-//       <AnimatedSection title="Home">
-//         <Hero />
-//       </AnimatedSection>
-
-//       <AnimatedSection
-//         title="About"
-//         className="bg-blue-950"
-//       >
-//         <div className="text-center">
-//           <h2 className="text-4xl font-bold mb-4">
-//             About Us
-//           </h2>
-//           <p className="text-gray-300">
-//             Learn more about us.
-//           </p>
-//         </div>
-//       </AnimatedSection>
-
-//       <AnimatedSection
-//         title="Services"
-//         className="bg-purple-950"
-//       >
-//         <div className="text-center">
-//           <h2 className="text-4xl font-bold mb-4">
-//             Our Services
-//           </h2>
-//           <p className="text-gray-300">
-//             Discover our services.
-//           </p>
-//         </div>
-//       </AnimatedSection>
-
-//       <AnimatedSection
-//         title="Portfolio"
-//         className="bg-emerald-950"
-//       >
-//         <div className="text-center">
-//           <h2 className="text-4xl font-bold mb-4">
-//             Our Portfolio
-//           </h2>
-//           <p className="text-gray-300">
-//             Check out our projects.
-//           </p>
-//         </div>
-//       </AnimatedSection>
-
-//       <AnimatedSection
-//         title="Contact"
-//         className="bg-orange-950"
-//       >
-//         <div className="text-center">
-//           <h2 className="text-4xl font-bold mb-4">
-//             Contact Us
-//           </h2>
-//           <p className="text-gray-300">
-//             Get in touch with us.
-//           </p>
-//         </div>
-//       </AnimatedSection>
-//     </div>
-//   );
-// }
-
 "use client";
 
 import { useState, useEffect } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import Hero from "@/components/Hero";
 import IntroAnimation from "@/components/IntroAnimation";
+import Highlight from "@/components/Highlight";
+import Nav from "@/components/Nav";
 
 export default function Home() {
   // Controls whether the intro animation is still active.
@@ -106,7 +38,23 @@ export default function Home() {
 
   return (
     <main className="w-full">
-      {/* Intro logo animation */}
+      {/* Shared Hero background and layout */}
+      <div
+        className={`herobg relative isolate flex min-h-screen w-full flex-col ${
+          !introActive ? "hero-entrance" : ""
+        }`}
+      >
+        {/* Background overlay */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#02090D]/95 via-[#02090D]/65 to-[#02090D]/30" />
+
+        {/* Navbar */}
+        <Nav introActive={introActive} />
+
+        {/* Hero content */}
+        <Hero introActive={introActive} logoMoving={logoMoving} />
+      </div>
+
+      {/* Intro animation */}
       {introActive && (
         <IntroAnimation
           onLogoMoveStart={() => setLogoMoving(true)}
@@ -114,9 +62,7 @@ export default function Home() {
         />
       )}
 
-      {/* Main Hero section */}
-      <Hero introActive={introActive} logoMoving={logoMoving} />
-      
+      {/* Remaining sections */}
       {/* About section */}
       <AnimatedSection title="About" className="bg-blue-950">
         <div className="min-h-screen flex items-center justify-center">

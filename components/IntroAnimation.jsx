@@ -3,17 +3,24 @@
 import { useRef } from "react";
 import { motion, useAnimationControls } from "motion/react";
 import Image from "next/image";
+import Highlight from "./Highlight";
 
 const letters = ["L", "P", "H", "A"];
 
 export default function IntroAnimation({ onComplete, onLogoMoveStart }) {
   const brandRef = useRef(null);
+  const completedRef = useRef(false);
   const controls = useAnimationControls();
 
   const handleLastLetterComplete = async () => {
+    // Prevent the animation from triggering multiple times.
+    if (completedRef.current) return;
+    completedRef.current = true;
+
     const brand = brandRef.current;
     const target = document.getElementById("nav-brand");
 
+    // If the navbar logo is unavailable, finish the intro safely.
     if (!brand || !target) {
       onComplete?.();
       return;
@@ -22,6 +29,7 @@ export default function IntroAnimation({ onComplete, onLogoMoveStart }) {
     const currentRect = brand.getBoundingClientRect();
     const targetRect = target.getBoundingClientRect();
 
+    // Calculate the logo's destination inside the navbar.
     const x =
       targetRect.left +
       targetRect.width / 2 -
@@ -34,12 +42,13 @@ export default function IntroAnimation({ onComplete, onLogoMoveStart }) {
 
     const scale = targetRect.width / currentRect.width;
 
-    // Wait before starting the logo travel
+    // Pause before starting the logo transition.
     await new Promise((resolve) => setTimeout(resolve, 700));
 
-    // Notify the Hero that the logo is starting to move.
+    // Notify Hero that the logo is moving.
     onLogoMoveStart?.();
 
+    // Animate the logo toward the navbar.
     await controls.start({
       x,
       y,
@@ -50,13 +59,13 @@ export default function IntroAnimation({ onComplete, onLogoMoveStart }) {
       },
     });
 
-    // Fade out the intro overlay after the logo arrives
+    // Finish the intro after the logo reaches the navbar.
     onComplete?.();
   };
 
   return (
     <>
-      {/* Background overlay stays fixed */}
+      {/* Dark background overlay */}
       <motion.div
         className="fixed inset-0 z-[9998] bg-[#02090D]"
         initial={{ opacity: 1 }}
@@ -68,15 +77,19 @@ export default function IntroAnimation({ onComplete, onLogoMoveStart }) {
         }}
       />
 
-      {/* Logo animation layer */}
-      <div className="pointer-events-none fixed inset-0 z-[9999] flex items-center justify-center">
+      {/* Intro logo animation layer */}
+      <div className="pointer-events-none fixed inset-0 z-[9999] isolate flex items-center justify-center">
+        {/* Purple glow behind the logo */}
+        <Highlight size="medium" />
+
+        {/* Animated brand container */}
         <motion.div
           ref={brandRef}
           initial={{ x: 0, y: 0, scale: 1 }}
           animate={controls}
-          className="flex items-center gap-2"
+          className="relative z-10 flex items-center gap-2"
         >
-          {/* Logo */}
+          {/* Logo symbol */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7, x: 0 }}
             animate={{
@@ -107,7 +120,7 @@ export default function IntroAnimation({ onComplete, onLogoMoveStart }) {
             />
           </motion.div>
 
-          {/* Letters */}
+          {/* Animated brand letters */}
           <div className="flex overflow-hidden">
             {letters.map((letter, index) => (
               <motion.span
