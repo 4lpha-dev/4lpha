@@ -85,6 +85,10 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .herobg {
   min-height: 100vh;
   width: 100%;
@@ -95,13 +99,18 @@
 }
 
 /* Mobile Background */
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .herobg {
-    background-size: auto 65vh;
+    /* background-size: auto 65vh;
     background-position: 65% top;
-    background-color: #02090d;
+    background-color: #02090d; */
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    background-image: url("/Images/phoneImg.jpg");
+
   }
-} */
+}
 
 /* Word Animation */
 @keyframes wordIn {

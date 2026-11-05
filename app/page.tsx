@@ -40,7 +40,7 @@ export default function Home() {
     <main className="w-full">
       {/* Shared Hero background and layout */}
       <div
-        className={`herobg relative isolate flex min-h-screen w-full flex-col ${
+        className={`herobg  relative  flex min-h-screen w-full flex-col ${
           !introActive ? "hero-entrance" : ""
         }`}
       >

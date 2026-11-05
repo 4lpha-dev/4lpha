@@ -1,5 +1,5 @@
 "use client";
-
+import { useLanguage } from "@/context/LanguageContext";
 const socials = [
   {
     name: "GitHub",
@@ -44,8 +44,14 @@ const socials = [
 ];
 
 export default function SocialDock() {
+  const { t, language } = useLanguage();
   return (
-    <div className="relative">
+    <div
+      className={`inline md:fixed bottom-5 z-50 bg-gray-700 rounded-2xl p-2 ${
+        language === "ar" ? "left-5" : "right-5"
+      }`}
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
       <div className="flex items-center justify-center gap-2 sm:gap-2.5">
         {socials.map((social) => (
           <a

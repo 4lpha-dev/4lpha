@@ -1,22 +1,27 @@
-const steps = [
-  {
-    number: "01",
-    title: "Develop",
-    description: "Build powerful digital products.",
-  },
-  {
-    number: "02",
-    title: "Test",
-    description: "Ensure quality and reliability.",
-  },
-  {
-    number: "03",
-    title: "Deploy",
-    description: "Launch and deliver your product.",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
+
 
 export default function ProcessTimeline() {
+  const { language, toggleLanguage, t } = useLanguage();
+  const steps = [
+    {
+      number: t.steps.step1.number,
+      title: t.steps.step1.title,
+      description: t.steps.step1.description,
+    },
+    {
+      number: t.steps.step2.number,
+      title: t.steps.step2.title,
+      description: t.steps.step2.description,
+    },
+    {
+      number: t.steps.step3.number,
+      title: t.steps.step3.title,
+      description: t.steps.step3.description,
+    },
+  
+  ];
+
   return (
     <div className="flex flex-col">
       {steps.map((step, index) => (

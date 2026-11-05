@@ -35,6 +35,7 @@ export default function AnimatedSection({
   return (
     <section
       ref={sectionRef}
+      dir="ltr"
       className={`relative  overflow-hidden bg-gray-900 text-white ${className}`}
     >
       {/* Overlay */}
