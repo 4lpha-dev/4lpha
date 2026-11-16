@@ -89,6 +89,24 @@ body {
   overflow-x: hidden;
 }
 
+/* =================================
+   Smooth Scrolling
+================================= */
+
+html {
+  scroll-behavior: smooth;
+
+  /* Offset for the fixed navbar */
+  scroll-padding-top: 90px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 .herobg {
   min-height: 100vh;
   width: 100%;
@@ -104,11 +122,10 @@ body {
     /* background-size: auto 65vh;
     background-position: 65% top;
     background-color: #02090d; */
-      background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-image: url("/Images/phoneImg.jpg");
-
   }
 }
 
@@ -359,5 +376,649 @@ body {
   .highlight--hero {
     width: 100vw;
     height: 80vh;
+  }
+}
+
+/* 4LPHA Animated Start Project Button */
+.animated-button {
+  --button-color: #00e5ff;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 14px 36px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+
+  background-color: transparent;
+  color: var(--button-color);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  box-shadow: 0 0 0 2px var(--button-color);
+  cursor: pointer;
+  overflow: hidden;
+
+  transition:
+    color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+    border-radius 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 20px;
+  fill: var(--button-color);
+  z-index: 9;
+
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 12px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 20px;
+  height: 20px;
+
+  background-color: var(--button-color);
+  border-radius: 50%;
+  opacity: 0;
+
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+
+  transform: translateX(-8px);
+
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #02090d;
+  border-radius: 14px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 12px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(8px);
+}
+
+.animated-button:hover svg {
+  fill: #02090d;
+}
+
+.animated-button:active {
+  transform: scale(0.96);
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+@media (min-width: 640px) {
+  .animated-button {
+    padding: 12px 36px;
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-button,
+  .animated-button svg,
+  .animated-button .circle,
+  .animated-button .text {
+    transition: none;
+  }
+}
+
+/* Text Shadow */
+
+.hero-content-shadow {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-content-shadow::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -45px -60px;
+  pointer-events: none;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.48) 40%,
+    rgba(0, 0, 0, 0.2) 70%,
+    transparent 100%
+  );
+
+  filter: blur(22px);
+}
+/* ================================
+   Services Card
+================================ */
+
+.service-card {
+  --grid-color: rgba(0, 166, 189, 0.1);
+
+  background-color: #0d1830;
+
+  background-image:
+    linear-gradient(
+      0deg,
+      transparent 24%,
+      var(--grid-color) 25%,
+      var(--grid-color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--grid-color) 75%,
+      var(--grid-color) 76%,
+      transparent 77%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      var(--grid-color) 25%,
+      var(--grid-color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--grid-color) 75%,
+      var(--grid-color) 76%,
+      transparent 77%
+    );
+
+  background-size: 55px 55px;
+
+  transition:
+    box-shadow 350ms ease,
+    border-color 350ms ease;
+}
+
+/* Card Hover Effect */
+.service-card:hover {
+  border-color: rgba(0, 166, 189, 0.45);
+
+  box-shadow:
+    0 0 20px rgba(0, 166, 189, 0.08),
+    0 0 45px rgba(0, 166, 189, 0.12),
+    0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* ================================
+   Services Page Background
+================================ */
+
+.services-page {
+  width: 100%;
+  min-height: 100%;
+
+  background: #000000;
+
+  --gap: 5em;
+  --line: 1px;
+  --color: rgba(255, 255, 255, 0.2);
+
+  background-image:
+    linear-gradient(
+      -90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+
+  background-size: var(--gap) var(--gap);
+}
+
+/* =================================
+   4LPHA - Custom 404 Page
+================================= */
+
+.not-found-page {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100svh;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 90px 24px 65px;
+
+  background: #02090d;
+  color: #ffffff;
+}
+
+/* Top Label */
+.not-found-label {
+  position: absolute;
+  top: 35px;
+  left: 5%;
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #00a6bd;
+}
+
+/* Face Container */
+.not-found-face-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 310px;
+  color: #00d5e8;
+  filter: drop-shadow(0 0 18px rgba(0, 213, 232, 0.12));
+}
+
+.not-found-face {
+  width: 200px;
+  overflow: visible;
+}
+
+/* Face Animations */
+.not-found-eyes,
+.not-found-eye-lid,
+.not-found-mouth-left,
+.not-found-mouth-right,
+.not-found-nose,
+.not-found-pupil {
+  animation: not-found-entrance 1s 0.3s forwards;
+}
+
+.not-found-eye-lid,
+.not-found-pupil {
+  animation-duration: 4s;
+  animation-delay: 1.3s;
+  animation-iteration-count: infinite;
+}
+
+.not-found-eye-lid {
+  animation-name: not-found-eye-lid;
+}
+
+.not-found-mouth-left {
+  animation-name: not-found-mouth-left;
+}
+
+.not-found-mouth-right {
+  animation-name: not-found-mouth-right;
+}
+
+.not-found-nose {
+  animation-name: not-found-nose;
+}
+
+.not-found-pupil {
+  animation-name: not-found-pupil;
+}
+
+/* Error Content */
+.not-found-content {
+  display: flex;
+  max-width: 520px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.not-found-code {
+  margin-bottom: 8px;
+  font-family: monospace;
+  font-size: clamp(55px, 9vw, 85px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 8px;
+  color: #00d5e8;
+  text-shadow: 0 0 30px rgba(0, 213, 232, 0.15);
+}
+
+.not-found-content h1 {
+  margin-top: 12px;
+  font-size: clamp(25px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.not-found-content p {
+  max-width: 420px;
+  margin-top: 14px;
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Back Home Button */
+.not-found-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+  padding: 14px 28px;
+  border: 1px solid #00d5e8;
+  border-radius: 999px;
+
+  background: #00d5e8;
+  color: #02090d;
+
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    background 300ms ease,
+    color 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+.not-found-button:hover {
+  background: transparent;
+  color: #00d5e8;
+  border-color: #00d5e8;
+  box-shadow: 0 0 25px rgba(0, 213, 232, 0.15);
+}
+
+.not-found-button span {
+  transition: transform 300ms ease;
+}
+
+.not-found-button:hover span {
+  transform: translate(3px, -3px);
+}
+
+/* Footer */
+.not-found-footer {
+  position: absolute;
+  bottom: 25px;
+  color: #475569;
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* =================================
+   Keyframes
+================================= */
+
+@keyframes not-found-entrance {
+  from {
+    transform: translateY(112.5px);
+  }
+
+  to {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes not-found-eye-lid {
+  0%,
+  40%,
+  45%,
+  100% {
+    transform: translateY(0);
+  }
+
+  42.5% {
+    transform: translateY(17.5px);
+  }
+}
+
+@keyframes not-found-pupil {
+  0%,
+  37.5%,
+  40%,
+  45%,
+  87.5%,
+  100% {
+    stroke-dashoffset: 0;
+    transform: translate(0, 0);
+  }
+
+  12.5%,
+  25%,
+  62.5%,
+  75% {
+    transform: translate(-35px, 0);
+  }
+
+  42.5% {
+    stroke-dashoffset: 35;
+    transform: translate(0, 17.5px);
+  }
+}
+
+@keyframes not-found-mouth-left {
+  from,
+  50% {
+    stroke-dashoffset: -102;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes not-found-mouth-right {
+  from,
+  50% {
+    stroke-dashoffset: 102;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes not-found-nose {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(0, 22.5px);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .not-found-page *,
+  .not-found-page *::before,
+  .not-found-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .not-found-page {
+    padding-inline: 20px;
+  }
+
+  .not-found-face-container {
+    height: 260px;
+  }
+
+  .not-found-face {
+    width: 170px;
+  }
+
+  .not-found-content p {
+    font-size: 14px;
+  }
+
+  .not-found-label {
+    top: 25px;
+  }
+}
+
+/* ContactInfoCard Social Icons */
+.social-icon {
+  --social-color: #333;
+  isolation: isolate;
+  position: relative;
+  overflow: visible;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.social-fill {
+  position: absolute;
+  inset: auto 0 0;
+  height: 0;
+  border-radius: inherit;
+  background: var(--social-color);
+  transition: height 0.35s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.social-icon:hover .social-fill {
+  height: 100%;
+}
+
+.social-icon:hover {
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Platform Colors */
+.social-icon[data-social="github"] {
+  --social-color: #333;
+}
+
+.social-icon[data-social="linkedin"] {
+  --social-color: #0a66c2;
+}
+
+.social-icon[data-social="instagram"] {
+  --social-color: linear-gradient(45deg, #fcaf45, #e4405f, #833ab4);
+}
+
+.social-icon[data-social="facebook"] {
+  --social-color: #1877f2;
+}
+
+.social-icon[data-social="discord"] {
+  --social-color: #5865f2;
+}
+
+.social-icon[data-social="tiktok"] {
+  --social-color: #111;
+}
+
+.social-icon[data-social="youtube"] {
+  --social-color: #ff0000;
+}
+
+/* Tooltip */
+.social-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 5px);
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: var(--social-color);
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 20;
+}
+
+.social-icon:hover .social-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* Contact Info Card - Animated Border */
+.contact-info-card {
+  isolation: isolate;
+  position: relative;
+}
+
+.contact-info-card::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 150%;
+  top: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #00d5e8, #006b80, #00a6bd, #00e5ff);
+  opacity: 0;
+  animation: contact-card-rotation 6s linear infinite;
+  animation-play-state: paused;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.contact-info-card:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.contact-info-card::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 22px;
+  background: #0d1830;
+  z-index: 0;
+}
+
+@keyframes contact-card-rotation {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(360deg);
   }
 }

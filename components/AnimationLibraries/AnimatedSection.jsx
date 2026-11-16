@@ -1,8 +1,9 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from "react";
-import Nav from "@/components/Nav"
+import { useRef, useState, useEffect } from "react";
+
 export default function AnimatedSection({
+  id,
   title,
   children,
   className = "",
@@ -22,7 +23,7 @@ export default function AnimatedSection({
       },
       {
         threshold: 0.5,
-      }
+      },
     );
 
     if (sectionRef.current) {
@@ -34,9 +35,10 @@ export default function AnimatedSection({
 
   return (
     <section
+      id={id}
       ref={sectionRef}
       dir="ltr"
-      className={`relative  overflow-hidden bg-gray-900 text-white ${className}`}
+      className={`relative overflow-hidden bg-gray-900 text-white ${className}`}
     >
       {/* Overlay */}
       <div
@@ -45,16 +47,10 @@ export default function AnimatedSection({
           flex items-center justify-center
           bg-black/75 backdrop-blur-md
           transition-all duration-1000 delay-1000
-          ${
-            isVisible
-              ? "opacity-0 invisible"
-              : "opacity-100 visible"
-          }
+          ${isVisible ? "opacity-0 invisible" : "opacity-100 visible"}
         `}
       >
-        <h1 className="text-5xl md:text-7xl font-bold">
-          {title}
-        </h1>
+        <h1 className="text-5xl md:text-7xl font-bold">{title}</h1>
       </div>
 
       {/* Main Content */}
@@ -62,11 +58,7 @@ export default function AnimatedSection({
         className={`
           relative z-10
           transition-all duration-1000 delay-[2000ms]
-          ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
         `}
       >
         {children}
