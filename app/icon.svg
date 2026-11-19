@@ -1,0 +1,79 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="512"
+     height="512"
+     viewBox="0 0 512 512">
+
+  <defs>
+    <!-- Logo Gradients -->
+    <linearGradient id="gBar" x1="0.8" y1="0" x2="0.1" y2="1">
+      <stop offset="0" stop-color="#1F7BFF"/>
+      <stop offset="1" stop-color="#0B4FF0"/>
+    </linearGradient>
+
+    <linearGradient id="gWedge" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#0A5BFF"/>
+      <stop offset="1" stop-color="#18B8FF"/>
+    </linearGradient>
+
+    <linearGradient id="gBand" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#00E5FF"/>
+      <stop offset="1" stop-color="#18B0FF"/>
+    </linearGradient>
+
+    <linearGradient id="gDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#0A3FD8"/>
+      <stop offset="1" stop-color="#0B63F5"/>
+    </linearGradient>
+
+    <linearGradient id="gBlade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#00F0FF"/>
+      <stop offset="0.5" stop-color="#00C8FF"/>
+      <stop offset="1" stop-color="#0A55FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background with Rounded Corners -->
+  <rect
+    width="512"
+    height="512"
+    rx="58"
+    fill="#081426"
+  />
+
+  <!-- Centered Logo - Original Size -->
+  <g transform="translate(12 38) scale(0.78)">
+
+    <!-- Large Diagonal Bar -->
+    <path
+      fill="url(#gBar)"
+      d="M360 40 L478 40 Q488 42 482 52 L272 298 L48 410 Q40 414 46 404 Z"
+    />
+
+    <!-- Lower Left Wedge -->
+    <path
+      fill="url(#gWedge)"
+      d="M272 298 L335 298 L232 420 Q229 423 224 423 L52 423 Q42 423 52 417 Z"
+    />
+
+    <!-- Light Cyan Band -->
+    <path
+      fill="url(#gBand)"
+      d="M335 298 L385 298 L385 420 L236 422 Q229 423 234 416 Z"
+    />
+
+    <!-- Dark Centre Shade -->
+    <path
+      fill="url(#gDark)"
+      opacity="0.85"
+      d="M345 298 L385 298 L385 420 L246 421 Z"
+    />
+
+    <!-- Vertical Blade -->
+    <path
+      fill="url(#gBlade)"
+      d="M480 135 Q486 133 485 142 L485 300 L578 300 Q586 300 580 307 L398 512 Q392 519 387 514 L385 508 L385 238 Z"
+    />
+
+  </g>
+</svg>

@@ -3,8 +3,9 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import GhostCursor from "../AnimationLibraries/GhostCursor";
+import Image from "next/image";
 
-export default function ServiceCard({ service, index }) {
+export default function ServiceCard({ service, index, isArabic }) {
   const cardRef = useRef(null);
 
   // Track the card's scroll position.
@@ -118,7 +119,13 @@ export default function ServiceCard({ service, index }) {
             <div className="relative min-h-[320px] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#091A26]/80">
               <div className="flex min-h-[320px] h-full items-center justify-center">
                 <span className="font-mono text-xs tracking-widest text-white/25">
-                  FEATURED IMAGE
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 50vw"
+                    className="object-cover"
+                  />
                 </span>
               </div>
             </div>
@@ -126,7 +133,11 @@ export default function ServiceCard({ service, index }) {
         </div>
 
         {/* Card index indicator. */}
-        <span className="absolute bottom-5 right-6 z-10 font-mono text-xs text-white/40">
+        <span
+          className={`absolute bottom-5 z-10 font-mono text-xs text-white/40 ${
+            isArabic ? "left-6" : "right-6"
+          }`}
+        >
           0{index + 1} / 04
         </span>
       </motion.div>

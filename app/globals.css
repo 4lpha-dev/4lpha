@@ -85,6 +85,11 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* body {
+  overflow-x: hidden;
+} */
+
+html,
 body {
   overflow-x: hidden;
 }

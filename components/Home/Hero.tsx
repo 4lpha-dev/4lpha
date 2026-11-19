@@ -151,8 +151,9 @@ export default function Hero({ introActive, logoMoving }) {
               </button>
             </Link>
             {/* Secondary CTA: Watch Our Story. */}
-            <button
+            <Link
               type="button"
+              href="https://www.youtube.com/@4lpha.Digital"
               aria-label="Watch our story"
               className="
       group inline-flex shrink-0 items-center justify-center
@@ -178,7 +179,7 @@ export default function Hero({ introActive, logoMoving }) {
               <span className="whitespace-nowrap text-sm sm:text-base">
                 {t.hero.buttons.watchStory}
               </span>
-            </button>
+            </Link>
           </div>
           {/* Trust line follows the CTA entrance with a slight delay. */}
           <div>

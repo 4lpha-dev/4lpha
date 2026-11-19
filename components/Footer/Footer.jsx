@@ -64,6 +64,7 @@ export default function Footer() {
       services: "Services",
       portfolio: "Portfolio",
       about: "About Us",
+      joinUs: "Join Us",
       contact: "Contact",
       startProject: "Start a Project",
 
@@ -93,6 +94,7 @@ export default function Footer() {
       services: "خدماتنا",
       portfolio: "أعمالنا",
       about: "من نحن",
+      joinUs: "انضم إلينا",
       contact: "تواصل معنا",
       startProject: "ابدأ مشروعك",
 
@@ -117,6 +119,10 @@ export default function Footer() {
     { label: t.services, href: "#services" },
     { label: t.portfolio, href: "#portfolio" },
     { label: t.about, href: "#about" },
+
+    // Join Us - Opens in a new tab
+    { label: t.joinUs, href: "/join-us", external: true },
+
     { label: t.contact, href: "#contact" },
     { label: t.startProject, href: "#contact" },
   ];
@@ -295,7 +301,14 @@ export default function Footer() {
             {/* Two-column Links */}
             <div className="mt-7 grid grid-cols-2 gap-x-5 gap-y-6">
               {navigationLinks.map((link) => (
-                <Link key={link.label} href={link.href} className={linkClass}>
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  // Join Us Blank
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  className={linkClass}
+                >
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#00A6BD]/70 transition-all duration-300 group-hover/link:scale-125 group-hover/link:bg-[#00D5E8] group-hover/link:shadow-[0_0_8px_#00D5E8]" />
 
                   <span className="leading-6">{link.label}</span>
